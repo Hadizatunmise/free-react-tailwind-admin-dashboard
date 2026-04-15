@@ -9,7 +9,7 @@ RUN npm install
 # Build stage
 FROM deps AS builder
 COPY . .
-RUN npm run build
+RUN NODE_OPTIONS="--max-old-space-size=512" npm run build
 
 # Production stage
 FROM nginx:alpine AS runner
